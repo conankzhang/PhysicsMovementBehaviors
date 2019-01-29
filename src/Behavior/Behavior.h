@@ -14,6 +14,8 @@ public:
 	CBehavior();
 	~CBehavior();
 
+	SBehaviorOutput GetBehaviorOutput();
+
 	float Weight;
 };
 

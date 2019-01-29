@@ -1,8 +1,9 @@
 #pragma once
 
 #include <vector>
-#include "Entity/Boid.h"
 #include "Behavior/Behavior.h"
+
+class CBoid;
 
 class CFlock
 {
@@ -14,8 +15,8 @@ public:
 	void Draw() const;
 
 private:
-	std::vector<CBoid> Boids;
-	std::vector<CBehavior> Behaviors;
+	SBehaviorOutput GetBehaviorOutput(const CBoid& Boid);
 
-	int FlockCount;
+	std::vector<CBoid *> Boids;
+	std::vector<CBehavior> Behaviors;
 };

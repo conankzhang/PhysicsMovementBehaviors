@@ -4,12 +4,10 @@
 
 struct SBehaviorOutput;
 
-class CKinematic
+struct SKinematic
 {
-public:
 	void Update(const SBehaviorOutput& Behavior, double DeltaTime);
 
-private:
 	ofVec2f Position;
 	ofVec2f Velocity;
 

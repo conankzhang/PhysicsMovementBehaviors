@@ -2,7 +2,7 @@
 
 #include "Behavior/Behavior.h"
 
-void CKinematic::Update(const SBehaviorOutput& Behavior, double DeltaTime)
+void SKinematic::Update(const SBehaviorOutput& Behavior, double DeltaTime)
 {
 	Position += Velocity * DeltaTime;
 	Orientation += Rotation * DeltaTime;
