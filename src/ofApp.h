@@ -2,6 +2,8 @@
 
 #include "ofMain.h"
 
+class CFlock;
+
 class ofApp : public ofBaseApp{
 
 public:
@@ -23,4 +25,5 @@ public:
 
 private:
 	ofColor BackgroundColor;
+	std::shared_ptr<CFlock> Flock;
 };

@@ -1,15 +1,20 @@
 #include "Boid.h"
 
-Boid::Boid()
+CBoid::CBoid()
 {
 }
 
 
-Boid::~Boid()
+CBoid::~CBoid()
 {
 }
 
-void Boid::draw() const
+void CBoid::Update(const SBehaviorOutput& Behavior, double DeltaTime)
+{
+	Transform.Update(Behavior, DeltaTime);
+}
+
+void CBoid::Draw() const
 {
 
 }

@@ -1,18 +1,31 @@
 #include "ofApp.h"
+#include "Entity/Flock.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
 	BackgroundColor = ofColor(255, 255, 255);
+
+	Flock = make_shared<CFlock>(1);
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
+	double DeltaTime = 0;
 
+	if (Flock)
+	{
+		Flock->Update(DeltaTime);
+	}
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
 	ofBackground(BackgroundColor);
+
+	if (Flock)
+	{
+		Flock->Draw();
+	}
 
 	ofSetColor(0, 0, 0);
 	ofVec2f Position;

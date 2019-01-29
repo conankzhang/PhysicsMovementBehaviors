@@ -1,10 +1,17 @@
 #pragma once
-class Boid
+#include "Kinematic.h"
+
+struct SBehaviorOutput;
+
+class CBoid
 {
 public:
-	Boid();
-	~Boid();
+	CBoid();
+	~CBoid();
 
-	void draw() const;
+	void Update(const SBehaviorOutput& Behavior, double DeltaTime);
+	void Draw() const;
+
+private:
+	CKinematic Transform;
 };
-

@@ -130,8 +130,10 @@
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp">
       <Filter>addons\ofxXmlSettings\libs</Filter>
     </ClCompile>
+    <ClCompile Include="src\Entity\Flock.cpp" />
     <ClCompile Include="src\Entity\Boid.cpp" />
     <ClCompile Include="src\Entity\Kinematic.cpp" />
+    <ClCompile Include="src\Behavior\Behavior.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -688,8 +690,10 @@
     <ClInclude Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.h">
       <Filter>addons\ofxXmlSettings\libs</Filter>
     </ClInclude>
+    <ClInclude Include="src\Entity\Flock.h" />
     <ClInclude Include="src\Entity\Boid.h" />
     <ClInclude Include="src\Entity\Kinematic.h" />
+    <ClInclude Include="src\Behavior\Behavior.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
