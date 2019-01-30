@@ -135,6 +135,7 @@
     <ClCompile Include="src\Entity\Kinematic.cpp" />
     <ClCompile Include="src\Entity\Breadcrumb.cpp" />
     <ClCompile Include="src\Behavior\basic_motion.cpp" />
+    <ClCompile Include="src\Behavior\Behavior.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">

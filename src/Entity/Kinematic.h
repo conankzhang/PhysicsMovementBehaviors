@@ -6,8 +6,6 @@ struct SBehaviorOutput;
 
 struct SKinematic
 {
-	void Update(const SBehaviorOutput& Behavior, double DeltaTime);
-
 	ofVec2f Position;
 	ofVec2f Velocity;
 
@@ -16,5 +14,9 @@ struct SKinematic
 
 	float MaxSpeed;
 	float MaxAngularSpeed;
+
+	SKinematic();
+	void Update(const SBehaviorOutput& Behavior, double DeltaTime);
+
 };
 

@@ -3,6 +3,7 @@
 #include "ofMain.h"
 
 #include <vector>
+#include "Behavior/Behavior.h"
 
 class CFlock;
 struct SWeightedBehavior;
@@ -28,6 +29,6 @@ public:
 
 private:
 	ofColor BackgroundColor;
-	std::shared_ptr<CFlock> Flock;
-	std::vector<SWeightedBehavior *> BasicMotionBehaviors;
+	CFlock* Flock;
+	std::vector<SWeightedBehavior> WeightedBehaviors;
 };

@@ -3,7 +3,8 @@
 #include "Entity/Boid.h"
 #include "Behavior/Behavior.h"
 
-CFlock::CFlock(int InFlockCount)
+CFlock::CFlock(int InFlockCount, std::vector<SWeightedBehavior>* InWeightedBehaviors) :
+	WeightedBehaviors(InWeightedBehaviors)
 {
 	Boids.reserve(InFlockCount);
 	for (int i = 0; i < InFlockCount; i++)
@@ -53,11 +54,11 @@ SBehaviorOutput CFlock::GetBehaviorOutput(const CBoid& Boid)
 	{
 		for (auto WeightedBehavior : *WeightedBehaviors)
 		{
-			if (WeightedBehavior && WeightedBehavior->Behavior)
+			if (WeightedBehavior.Behavior)
 			{
-				SBehaviorOutput BehaviorOutput = WeightedBehavior->Behavior->GetBehaviorOutput();
-				ReturnBehaviorOutput.Linear += BehaviorOutput.Linear * WeightedBehavior->Weight;
-				ReturnBehaviorOutput.Angular += BehaviorOutput.Angular * WeightedBehavior->Weight;
+				SBehaviorOutput BehaviorOutput = WeightedBehavior.Behavior->GetBehaviorOutput();
+				ReturnBehaviorOutput.Linear += BehaviorOutput.Linear * WeightedBehavior.Weight;
+				ReturnBehaviorOutput.Angular += BehaviorOutput.Angular * WeightedBehavior.Weight;
 			}
 		}
 	}

@@ -6,6 +6,8 @@ struct SBehaviorOutput
 {
 	ofVec2f Linear;
 	float Angular;
+
+	SBehaviorOutput();
 };
 
 class CBehavior
@@ -18,4 +20,6 @@ struct SWeightedBehavior
 {
 	CBehavior* Behavior;
 	float Weight;
+
+	SWeightedBehavior(CBehavior* InBehavior, float InWeight);
 };

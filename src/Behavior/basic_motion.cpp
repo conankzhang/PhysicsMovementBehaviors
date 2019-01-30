@@ -4,5 +4,9 @@ SBehaviorOutput cbasic_motion::GetBehaviorOutput()
 {
 	SBehaviorOutput BehaviorOutput;
 
+	BehaviorOutput.Linear.x = 25;
+	BehaviorOutput.Linear.y = 25;
+	BehaviorOutput.Angular = 5;
+
 	return BehaviorOutput;
 }

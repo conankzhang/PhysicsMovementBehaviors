@@ -1,21 +1,14 @@
 #include "ofApp.h"
 #include "Entity/Flock.h"
 
-#include "Behavior/Behavior.h"
 #include "Behavior/basic_motion.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
 	BackgroundColor = ofColor::white;
 
-	Flock = make_shared<CFlock>(1);
-
-	SWeightedBehavior* BasicMotionBehavior = new SWeightedBehavior();
-	BasicMotionBehavior->Behavior = new cbasic_motion();
-	BasicMotionBehavior->Weight = 1;
-	BasicMotionBehaviors.push_back(BasicMotionBehavior);
-
-	Flock->SetWeightedBehaivors(make_shared<std::vector<SWeightedBehavior *>>(BasicMotionBehaviors));
+	WeightedBehaviors.push_back(SWeightedBehavior(new cbasic_motion(), 1));
+	Flock = new CFlock(1, &WeightedBehaviors);
 }
 
 //--------------------------------------------------------------
