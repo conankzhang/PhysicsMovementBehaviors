@@ -46,7 +46,7 @@ void CFlock::Draw() const
 	}
 }
 
-SBehaviorOutput CFlock::GetBehaviorOutput(const CBoid& Boid)
+SBehaviorOutput CFlock::GetBehaviorOutput(const CBoid& InBoid)
 {
 	SBehaviorOutput ReturnBehaviorOutput;
 
@@ -56,7 +56,7 @@ SBehaviorOutput CFlock::GetBehaviorOutput(const CBoid& Boid)
 		{
 			if (WeightedBehavior.Behavior)
 			{
-				SBehaviorOutput BehaviorOutput = WeightedBehavior.Behavior->GetBehaviorOutput();
+				SBehaviorOutput BehaviorOutput = WeightedBehavior.Behavior->GetBehaviorOutput(InBoid);
 				ReturnBehaviorOutput.Linear += BehaviorOutput.Linear * WeightedBehavior.Weight;
 				ReturnBehaviorOutput.Angular += BehaviorOutput.Angular * WeightedBehavior.Weight;
 			}

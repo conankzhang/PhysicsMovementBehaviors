@@ -2,8 +2,26 @@
 
 #include "Behavior.h"
 
+enum class EDirection
+{
+	UP,
+	RIGHT,
+	DOWN,
+	LEFT
+};
+
 class cbasic_motion : public CBehavior
 {
 public:
-	virtual SBehaviorOutput GetBehaviorOutput() override;
+	cbasic_motion();
+
+	virtual SBehaviorOutput GetBehaviorOutput(const CBoid& InBoid) override;
+
+private:
+	int WindowHeight;
+	int WindowWidth;
+
+	EDirection Direction;
+
+	float MaxSpeed;
 };

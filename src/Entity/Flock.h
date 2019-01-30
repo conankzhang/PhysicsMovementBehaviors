@@ -16,7 +16,7 @@ public:
 	void Draw() const;
 
 private:
-	SBehaviorOutput GetBehaviorOutput(const CBoid& Boid);
+	SBehaviorOutput GetBehaviorOutput(const CBoid& InBoid);
 
 	std::vector<CBoid *> Boids;
 	std::vector<SWeightedBehavior>* WeightedBehaviors;

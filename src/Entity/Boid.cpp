@@ -1,7 +1,9 @@
 #include "Boid.h"
 
 #include "Breadcrumb.h"
+
 #include "ofGraphics.h"
+#include "ofAppRunner.h"
 
 CBoid::CBoid() :
 	Color(ofColor::black),
@@ -9,6 +11,8 @@ CBoid::CBoid() :
 	BreadcrumbDropDistance(50),
 	LastBreadcrumbPosition(Transform.Position)
 {
+	Transform.Position.x = Size;
+	Transform.Position.y = ofGetWindowHeight() - Size;
 }
 
 CBoid::CBoid(const SKinematic& InTransform, const ofColor& InColor, float InSize) :

@@ -2,6 +2,8 @@
 
 #include "ofVec2f.h"
 
+class CBoid;
+
 struct SBehaviorOutput
 {
 	ofVec2f Linear;
@@ -13,7 +15,7 @@ struct SBehaviorOutput
 class CBehavior
 {
 public:
-	virtual SBehaviorOutput GetBehaviorOutput() = 0;
+	virtual SBehaviorOutput GetBehaviorOutput(const CBoid& InBoid) = 0;
 };
 
 struct SWeightedBehavior

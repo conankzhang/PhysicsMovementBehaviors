@@ -1,12 +1,65 @@
 #include "basic_motion.h"
 
-SBehaviorOutput cbasic_motion::GetBehaviorOutput()
+#include "Entity/Boid.h"
+
+#include "ofAppRunner.h"
+
+cbasic_motion::cbasic_motion() :
+	WindowHeight(ofGetWindowHeight()),
+	WindowWidth(ofGetWindowWidth()),
+	Direction(EDirection::UP),
+	MaxSpeed(25.0f)
+{
+
+}
+
+SBehaviorOutput cbasic_motion::GetBehaviorOutput(const CBoid& InBoid)
 {
 	SBehaviorOutput BehaviorOutput;
 
-	BehaviorOutput.Linear.x = 25;
-	BehaviorOutput.Linear.y = 25;
-	BehaviorOutput.Angular = 1;
+	switch(Direction)
+	{
+	case EDirection::UP:
+		if (InBoid.GetPosition().y < InBoid.GetSize())
+		{
+			Direction = EDirection::RIGHT;
+		}
+		else
+		{
+			BehaviorOutput.Linear.y = -MaxSpeed;
+			break;
+		}
+	case EDirection::RIGHT:
+		if (InBoid.GetPosition().x > WindowWidth - InBoid.GetSize())
+		{
+			Direction = EDirection::DOWN;
+		}
+		else
+		{
+			BehaviorOutput.Linear.x = MaxSpeed;
+			break;
+		}
+	case EDirection::DOWN:
+		if (InBoid.GetPosition().y > WindowHeight - InBoid.GetSize())
+		{
+			Direction = EDirection::LEFT;
+		}
+		else
+		{
+			BehaviorOutput.Linear.y = MaxSpeed;
+			break;
+		}
+	case EDirection::LEFT:
+		if (InBoid.GetPosition().x < InBoid.GetSize())
+		{
+			Direction = EDirection::UP;
+		}
+		else
+		{
+			BehaviorOutput.Linear.x = -MaxSpeed;
+			break;
+		}
+	}
 
 	return BehaviorOutput;
 }

@@ -23,6 +23,9 @@ public:
 	void Update(const SBehaviorOutput& Behavior, double DeltaTime);
 	void Draw() const;
 
+	inline ofVec2f GetPosition() const { return Transform.Position; }
+	inline float GetSize() const { return Size; }
+
 private:
 	void UpdateBreadCrumbs(double DeltaTime);
 	void DrawBeak() const;
