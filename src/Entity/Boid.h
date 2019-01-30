@@ -26,6 +26,7 @@ public:
 private:
 	void UpdateBreadCrumbs(double DeltaTime);
 	void DrawBeak() const;
+	void RotateVertex(ofVec2f& Vertex) const;
 
 	std::vector<CBreadcrumb*> BreadCrumbs;
 

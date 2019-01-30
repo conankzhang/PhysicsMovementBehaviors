@@ -117,14 +117,31 @@ void CBoid::UpdateBreadCrumbs(double DeltaTime)
 
 void CBoid::DrawBeak() const
 {
-	// #TODO Draw Beak using Orientation
-	ofVec2f TriangleVertex1 = Transform.Position;
-	ofVec2f TriangleVertex2 = Transform.Position;
-	ofVec2f TriangleVertex3 = Transform.Position;
+	// Default Beak to the Right Vertices
+	ofVec2f TriangleVertex1(0.0f, Size);
+	ofVec2f TriangleVertex2(0.0f, -Size);
+	ofVec2f TriangleVertex3(Size * 2, 0.0f);
 
-	TriangleVertex1.y += Size;
-	TriangleVertex2.y -= Size;
-	TriangleVertex3.x += Size * 2;
+	// Apply Orientation to Vertices
+	RotateVertex(TriangleVertex1);
+	RotateVertex(TriangleVertex2);
+	RotateVertex(TriangleVertex3);
+
+	// Translate Vertices to Position
+	TriangleVertex1 += Transform.Position;
+	TriangleVertex2 += Transform.Position;
+	TriangleVertex3 += Transform.Position;
 
 	ofDrawTriangle(TriangleVertex1, TriangleVertex2, TriangleVertex3);
+}
+
+void CBoid::RotateVertex(ofVec2f& Vertex) const
+{
+	float Orientation = Transform.Orientation;
+
+	float X = Vertex.x * cos(Orientation) - Vertex.y * sin(Orientation);
+	float Y = Vertex.x * sin(Orientation) + Vertex.y * cos(Orientation);
+
+	Vertex.x = X;
+	Vertex.y = Y;
 }
