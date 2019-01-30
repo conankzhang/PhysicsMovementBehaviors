@@ -9,8 +9,6 @@ CBoid::CBoid() :
 	BreadcrumbDropDistance(50),
 	LastBreadcrumbPosition(Transform.Position)
 {
-	Transform.Position.x = 50;
-	Transform.Position.y = 50;
 }
 
 CBoid::CBoid(const SKinematic& InTransform, const ofColor& InColor, float InSize) :
@@ -72,8 +70,6 @@ CBoid::~CBoid()
 void CBoid::Update(const SBehaviorOutput& Behavior, double DeltaTime)
 {
 	Transform.Update(Behavior, DeltaTime);
-	Transform.Position.y += 3;
-
 	UpdateBreadCrumbs(DeltaTime);
 }
 
@@ -121,6 +117,7 @@ void CBoid::UpdateBreadCrumbs(double DeltaTime)
 
 void CBoid::DrawBeak() const
 {
+	// #TODO Draw Beak using Orientation
 	ofVec2f TriangleVertex1 = Transform.Position;
 	ofVec2f TriangleVertex2 = Transform.Position;
 	ofVec2f TriangleVertex3 = Transform.Position;

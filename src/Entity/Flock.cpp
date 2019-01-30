@@ -1,6 +1,7 @@
 #include "Flock.h"
 
 #include "Entity/Boid.h"
+#include "Behavior/Behavior.h"
 
 CFlock::CFlock(int InFlockCount)
 {
@@ -48,11 +49,17 @@ SBehaviorOutput CFlock::GetBehaviorOutput(const CBoid& Boid)
 {
 	SBehaviorOutput ReturnBehaviorOutput;
 
-	for (auto Behavior : Behaviors)
+	if (WeightedBehaviors)
 	{
-		SBehaviorOutput BehaviorOutput = Behavior.GetBehaviorOutput();
-		ReturnBehaviorOutput.Linear += BehaviorOutput.Linear * Behavior.Weight;
-		ReturnBehaviorOutput.Angular += BehaviorOutput.Angular * Behavior.Weight;
+		for (auto WeightedBehavior : *WeightedBehaviors)
+		{
+			if (WeightedBehavior && WeightedBehavior->Behavior)
+			{
+				SBehaviorOutput BehaviorOutput = WeightedBehavior->Behavior->GetBehaviorOutput();
+				ReturnBehaviorOutput.Linear += BehaviorOutput.Linear * WeightedBehavior->Weight;
+				ReturnBehaviorOutput.Angular += BehaviorOutput.Angular * WeightedBehavior->Weight;
+			}
+		}
 	}
 
 	return ReturnBehaviorOutput;

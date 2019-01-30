@@ -184,9 +184,9 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Behavior\basic_motion.cpp" />
     <ClCompile Include="src\Entity\Breadcrumb.cpp" />
     <ClCompile Include="src\Entity\Flock.cpp" />
-    <ClCompile Include="src\Behavior\Behavior.cpp" />
     <ClCompile Include="src\Entity\Kinematic.cpp" />
     <ClCompile Include="src\Entity\Boid.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -232,6 +232,7 @@
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Behavior\basic_motion.h" />
     <ClInclude Include="src\Entity\Breadcrumb.h" />
     <ClInclude Include="src\Entity\Flock.h" />
     <ClInclude Include="src\Behavior\Behavior.h" />

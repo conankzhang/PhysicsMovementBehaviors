@@ -11,11 +11,11 @@ struct SBehaviorOutput
 class CBehavior
 {
 public:
-	CBehavior();
-	~CBehavior();
-
-	SBehaviorOutput GetBehaviorOutput();
-
-	float Weight;
+	virtual SBehaviorOutput GetBehaviorOutput() = 0;
 };
 
+struct SWeightedBehavior
+{
+	CBehavior* Behavior;
+	float Weight;
+};

@@ -1,7 +1,8 @@
 #pragma once
 
-#include <vector>
 #include "Behavior/Behavior.h"
+
+#include <vector>
 
 class CBoid;
 
@@ -14,9 +15,11 @@ public:
 	void Update(float DeltaTime);
 	void Draw() const;
 
+	void SetWeightedBehaivors(std::shared_ptr<std::vector<SWeightedBehavior *>> InWeightedBehaviors) { WeightedBehaviors = InWeightedBehaviors; }
+
 private:
 	SBehaviorOutput GetBehaviorOutput(const CBoid& Boid);
 
 	std::vector<CBoid *> Boids;
-	std::vector<CBehavior> Behaviors;
+	std::shared_ptr<std::vector<SWeightedBehavior *>> WeightedBehaviors;
 };

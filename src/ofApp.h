@@ -2,7 +2,10 @@
 
 #include "ofMain.h"
 
+#include <vector>
+
 class CFlock;
+struct SWeightedBehavior;
 
 class ofApp : public ofBaseApp{
 
@@ -26,4 +29,5 @@ public:
 private:
 	ofColor BackgroundColor;
 	std::shared_ptr<CFlock> Flock;
+	std::vector<SWeightedBehavior *> BasicMotionBehaviors;
 };
