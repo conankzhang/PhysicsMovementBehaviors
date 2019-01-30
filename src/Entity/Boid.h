@@ -1,8 +1,13 @@
 #pragma once
 #include "Kinematic.h"
+
 #include "ofColor.h"
+#include "ofVec2f.h"
+
+#include <vector>
 
 struct SBehaviorOutput;
+class CBreadcrumb;
 
 class CBoid
 {
@@ -19,9 +24,15 @@ public:
 	void Draw() const;
 
 private:
+	void UpdateBreadCrumbs(double DeltaTime);
 	void DrawBeak() const;
+
+	std::vector<CBreadcrumb*> BreadCrumbs;
 
 	SKinematic Transform;
 	ofColor Color;
 	float Size;
+
+	float BreadcrumbDropDistance;
+	ofVec2f LastBreadcrumbPosition;
 };

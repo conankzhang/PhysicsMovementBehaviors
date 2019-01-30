@@ -134,6 +134,7 @@
     <ClCompile Include="src\Entity\Boid.cpp" />
     <ClCompile Include="src\Entity\Kinematic.cpp" />
     <ClCompile Include="src\Behavior\Behavior.cpp" />
+    <ClCompile Include="src\Entity\Breadcrumb.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -694,6 +695,7 @@
     <ClInclude Include="src\Entity\Boid.h" />
     <ClInclude Include="src\Entity\Kinematic.h" />
     <ClInclude Include="src\Behavior\Behavior.h" />
+    <ClInclude Include="src\Entity\Breadcrumb.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

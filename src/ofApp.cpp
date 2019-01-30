@@ -3,27 +3,27 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-	BackgroundColor = ofColor::white;
+    BackgroundColor = ofColor::white;
 
-	Flock = make_shared<CFlock>(1);
+    Flock = make_shared<CFlock>(1);
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-	if (Flock)
-	{
-		Flock->Update(ofGetLastFrameTime());
-	}
+    if (Flock)
+    {
+        Flock->Update(ofGetLastFrameTime());
+    }
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	ofBackground(BackgroundColor);
+    ofBackground(BackgroundColor);
 
-	if (Flock)
-	{
-		Flock->Draw();
-	}
+    if (Flock)
+    {
+        Flock->Draw();
+    }
 }
 
 //--------------------------------------------------------------
