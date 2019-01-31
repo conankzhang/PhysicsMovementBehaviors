@@ -1,7 +1,7 @@
 #include "ofApp.h"
 #include "Entity/Flock.h"
 
-#include "Behavior/basic_motion.h"
+#include "Behavior/basic-motion.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
