@@ -3,8 +3,9 @@
 #include "Entity/Boid.h"
 
 //=======================================================================================================================
-cwander_steering::cwander_steering(const ofVec2f InTarget) :
-	Target(InTarget)
+cwander_steering::cwander_steering() :
+	MaxSpeed(150.0f),
+	MaxRotation(6.0f)
 {
 
 }
@@ -23,8 +24,14 @@ SBehaviorOutput cwander_steering::GetBehaviorOutput(const CBoid& InBoid)
 	Direction.x = cos(InBoid.GetOrientation());
 	Direction.y = sin(InBoid.GetOrientation());
 
-	BehaviorOutput.Linear = Direction * InBoid.GetMaxSpeed();
-	BehaviorOutput.Angular = InBoid.GetMaxAngularSpeed() * RandomBinomial();
+	ofVec2f TargetVelocity = Direction * MaxSpeed;
+	BehaviorOutput.Linear = TargetVelocity - InBoid.GetVelocity();
+
+	float TargetOrientation = InBoid.GetOrientation() + (MaxRotation * RandomBinomial());
+
+	DynamicAlign.SetTargetOrientation(TargetOrientation);
+
+	BehaviorOutput.Angular = DynamicAlign.GetBehaviorOutput(InBoid).Angular;
 
 	return BehaviorOutput;
 }
