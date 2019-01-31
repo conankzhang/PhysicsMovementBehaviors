@@ -8,6 +8,7 @@
 class CFlock;
 struct SWeightedBehavior;
 
+//=======================================================================================================================
 enum class EBehavior
 {
 	BASIC,
@@ -16,6 +17,7 @@ enum class EBehavior
 	FLOCK
 };
 
+//=======================================================================================================================
 class ofApp : public ofBaseApp
 {
 public:
@@ -38,8 +40,8 @@ public:
 private:
 	void HandleNewBehavior(EBehavior DesiredBehavior);
 
+	ofVec2f Target;
 	CFlock* Flock;
 	std::vector<SWeightedBehavior> WeightedBehaviors;
-
 	EBehavior CurrentBehavior;
 };

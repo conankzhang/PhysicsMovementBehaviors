@@ -2,6 +2,7 @@
 
 #include "Behavior/Behavior.h"
 
+//=======================================================================================================================
 SKinematic::SKinematic() :
 	Position(ofVec2f::zero()),
 	Velocity(ofVec2f::zero()),
@@ -13,6 +14,7 @@ SKinematic::SKinematic() :
 
 }
 
+//=======================================================================================================================
 void SKinematic::Update(const SBehaviorOutput& Behavior, double DeltaTime)
 {
 	Position += Velocity * DeltaTime;

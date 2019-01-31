@@ -3,6 +3,7 @@
 #include "Entity/Boid.h"
 #include "Behavior/Behavior.h"
 
+//=======================================================================================================================
 CFlock::CFlock(int InFlockCount, const std::vector<SWeightedBehavior>& InWeightedBehaviors) :
 	WeightedBehaviors(InWeightedBehaviors)
 {
@@ -13,6 +14,7 @@ CFlock::CFlock(int InFlockCount, const std::vector<SWeightedBehavior>& InWeighte
 	}
 }
 
+//=======================================================================================================================
 CFlock::~CFlock()
 {
 	for (auto Boid : Boids)
@@ -23,6 +25,7 @@ CFlock::~CFlock()
 	Boids.clear();
 }
 
+//=======================================================================================================================
 void CFlock::Update(float DeltaTime)
 {
 	for (auto Boid : Boids)
@@ -35,6 +38,7 @@ void CFlock::Update(float DeltaTime)
 	}
 }
 
+//=======================================================================================================================
 void CFlock::Draw() const
 {
 	for (auto Boid : Boids)
@@ -46,6 +50,7 @@ void CFlock::Draw() const
 	}
 }
 
+//=======================================================================================================================
 SBehaviorOutput CFlock::GetBehaviorOutput(const CBoid& InBoid)
 {
 	SBehaviorOutput ReturnBehaviorOutput;

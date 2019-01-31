@@ -5,6 +5,7 @@
 #include "ofGraphics.h"
 #include "ofAppRunner.h"
 
+//=======================================================================================================================
 CBoid::CBoid() :
 	Color(ofColor::black),
 	Size(10),
@@ -15,6 +16,7 @@ CBoid::CBoid() :
 	Transform.Position.y = ofGetWindowHeight() - Size;
 }
 
+//=======================================================================================================================
 CBoid::CBoid(const SKinematic& InTransform, const ofColor& InColor, float InSize) :
 	Transform(InTransform),
 	Color(InColor),
@@ -25,6 +27,7 @@ CBoid::CBoid(const SKinematic& InTransform, const ofColor& InColor, float InSize
 
 }
 
+//=======================================================================================================================
 CBoid::CBoid(const CBoid& Other) :
 	Transform(Other.Transform),
 	Color(Other.Color),
@@ -35,6 +38,7 @@ CBoid::CBoid(const CBoid& Other) :
 
 }
 
+//=======================================================================================================================
 CBoid::CBoid(CBoid&& Other) :
 	Transform(Other.Transform),
 	Color(Other.Color),
@@ -45,6 +49,7 @@ CBoid::CBoid(CBoid&& Other) :
 
 }
 
+//=======================================================================================================================
 CBoid& CBoid::operator=(const CBoid& Other)
 {
 	Transform = Other.Transform;
@@ -56,6 +61,7 @@ CBoid& CBoid::operator=(const CBoid& Other)
 	return *this;
 }
 
+//=======================================================================================================================
 CBoid& CBoid::operator=(CBoid&& Other)
 {
 	Transform = Other.Transform;
@@ -67,16 +73,19 @@ CBoid& CBoid::operator=(CBoid&& Other)
 	return *this;
 }
 
+//=======================================================================================================================
 CBoid::~CBoid()
 {
 }
 
+//=======================================================================================================================
 void CBoid::Update(const SBehaviorOutput& Behavior, double DeltaTime)
 {
 	Transform.Update(Behavior, DeltaTime);
 	UpdateBreadCrumbs(DeltaTime);
 }
 
+//=======================================================================================================================
 void CBoid::Draw() const
 {
 	ofSetColor(Color);
@@ -90,6 +99,7 @@ void CBoid::Draw() const
 	}
 }
 
+//=======================================================================================================================
 void CBoid::UpdateBreadCrumbs(double DeltaTime)
 {
 	auto Write = BreadCrumbs.begin();
@@ -119,6 +129,7 @@ void CBoid::UpdateBreadCrumbs(double DeltaTime)
 	}
 }
 
+//=======================================================================================================================
 void CBoid::DrawBeak() const
 {
 	// Default Beak to the Right Vertices
@@ -139,6 +150,7 @@ void CBoid::DrawBeak() const
 	ofDrawTriangle(TriangleVertex1, TriangleVertex2, TriangleVertex3);
 }
 
+//=======================================================================================================================
 void CBoid::RotateVertex(ofVec2f& Vertex) const
 {
 	float Orientation = Transform.Orientation;

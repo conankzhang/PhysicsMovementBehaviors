@@ -4,6 +4,7 @@
 
 #include "ofAppRunner.h"
 
+//=======================================================================================================================
 cbasic_motion::cbasic_motion() :
 	WindowHeight(ofGetWindowHeight()),
 	WindowWidth(ofGetWindowWidth()),
@@ -13,6 +14,7 @@ cbasic_motion::cbasic_motion() :
 
 }
 
+//=======================================================================================================================
 SBehaviorOutput cbasic_motion::GetBehaviorOutput(const CBoid& InBoid)
 {
 	SBehaviorOutput BehaviorOutput;

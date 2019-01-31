@@ -4,6 +4,7 @@
 #include "Behavior/basic-motion.h"
 #include "Behavior/seek-steering.h"
 
+//=======================================================================================================================
 void ofApp::setup()
 {
 	ofBackground(ofColor::white);
@@ -14,6 +15,7 @@ void ofApp::setup()
 	Flock = new CFlock(1, WeightedBehaviors);
 }
 
+//=======================================================================================================================
 void ofApp::update()
 {
 	if (Flock)
@@ -22,6 +24,7 @@ void ofApp::update()
 	}
 }
 
+//=======================================================================================================================
 void ofApp::draw()
 {
 	ofDrawBitmapString("Press 1: Basic Motion", 50, 50);
@@ -35,6 +38,7 @@ void ofApp::draw()
 	}
 }
 
+//=======================================================================================================================
 void ofApp::keyPressed(int key)
 {
 	EBehavior DesiredBehavior = EBehavior::BASIC;
@@ -61,6 +65,14 @@ void ofApp::keyPressed(int key)
 	}
 }
 
+//=======================================================================================================================
+void ofApp::mousePressed(int x, int y, int button)
+{
+	Target.x = x;
+	Target.y = y;
+}
+
+//=======================================================================================================================
 void ofApp::HandleNewBehavior(EBehavior DesiredBehavior)
 {
 	if (Flock)
@@ -78,7 +90,7 @@ void ofApp::HandleNewBehavior(EBehavior DesiredBehavior)
 		Flock = new CFlock(1, WeightedBehaviors);
 		break;
 	case EBehavior::SEEK:
-		WeightedBehaviors.push_back(SWeightedBehavior(new cseek_steering(), 1));
+		WeightedBehaviors.push_back(SWeightedBehavior(new cseek_steering(Target), 1));
 		Flock = new CFlock(1, WeightedBehaviors);
 		break;
 	case EBehavior::WANDER:
@@ -102,11 +114,6 @@ void ofApp::mouseMoved(int x, int y ){
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mousePressed(int x, int y, int button){
 
 }
 

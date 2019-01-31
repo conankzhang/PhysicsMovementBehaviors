@@ -2,6 +2,7 @@
 
 #include "ofGraphics.h"
 
+//=======================================================================================================================
 CBreadcrumb::CBreadcrumb(const ofVec2f& InPosition) :
 	Position(InPosition),
 	Color(ofColor::black),
@@ -13,6 +14,7 @@ CBreadcrumb::CBreadcrumb(const ofVec2f& InPosition) :
 {
 }
 
+//=======================================================================================================================
 CBreadcrumb::CBreadcrumb(const CBreadcrumb& Other) :
 	Position(Other.Position),
 	Color(Other.Color),
@@ -25,6 +27,7 @@ CBreadcrumb::CBreadcrumb(const CBreadcrumb& Other) :
 
 }
 
+//=======================================================================================================================
 CBreadcrumb::CBreadcrumb(CBreadcrumb&& Other) :
 	Position(Other.Position),
 	Color(Other.Color),
@@ -37,6 +40,7 @@ CBreadcrumb::CBreadcrumb(CBreadcrumb&& Other) :
 
 }
 
+//=======================================================================================================================
 CBreadcrumb& CBreadcrumb::operator=(const CBreadcrumb& Other)
 {
 	Position = Other.Position;
@@ -50,6 +54,7 @@ CBreadcrumb& CBreadcrumb::operator=(const CBreadcrumb& Other)
 	return *this;
 }
 
+//=======================================================================================================================
 CBreadcrumb& CBreadcrumb::operator=(CBreadcrumb&& Other)
 {
 	Position = Other.Position;
@@ -63,10 +68,12 @@ CBreadcrumb& CBreadcrumb::operator=(CBreadcrumb&& Other)
 	return *this;
 }
 
+//=======================================================================================================================
 CBreadcrumb::~CBreadcrumb()
 {
 }
 
+//=======================================================================================================================
 void CBreadcrumb::Update(double DeltaTime)
 {
 	LifeSpan -= DeltaTime;
@@ -77,6 +84,7 @@ void CBreadcrumb::Update(double DeltaTime)
 	Size = (OriginalSize * (LifeSpan / OriginalLifeSpan));
 }
 
+//=======================================================================================================================
 void CBreadcrumb::Draw() const
 {
 	ofSetColor(Color);

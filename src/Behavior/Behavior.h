@@ -4,6 +4,7 @@
 
 class CBoid;
 
+//=======================================================================================================================
 struct SBehaviorOutput
 {
 	ofVec2f Linear;
@@ -13,12 +14,14 @@ struct SBehaviorOutput
 	SBehaviorOutput();
 };
 
+//=======================================================================================================================
 class CBehavior
 {
 public:
 	virtual SBehaviorOutput GetBehaviorOutput(const CBoid& InBoid) = 0;
 };
 
+//=======================================================================================================================
 struct SWeightedBehavior
 {
 	CBehavior* Behavior;
