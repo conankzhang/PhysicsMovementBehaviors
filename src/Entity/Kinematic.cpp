@@ -9,7 +9,7 @@ SKinematic::SKinematic() :
 	Orientation(0.0f),
 	Rotation(0.0f),
 	MaxSpeed(500.0f),
-	MaxAngularSpeed(10.0f)
+	MaxAngularSpeed(5.0f)
 {
 
 }
