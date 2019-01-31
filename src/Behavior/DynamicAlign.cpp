@@ -44,7 +44,6 @@ SBehaviorOutput CDynamicAlign::GetBehaviorOutput(const CBoid& InBoid)
 		TargetRotation = MaxRotation * RotationSize / SlowAngleThreshold;
 	}
 
-	TargetRotation = Rotation / RotationSize;
 	float DeltaVelocity = TargetRotation - InBoid.GetRotation();
 	float Acceleration = DeltaVelocity / TimeToTarget;
 
