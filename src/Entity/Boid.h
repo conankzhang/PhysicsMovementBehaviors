@@ -22,7 +22,7 @@ public:
 	~CBoid();
 
 	void Update(const SBehaviorOutput& Behavior, double DeltaTime);
-	void Draw() const;
+	void Draw(const ofColor& BoidColor) const;
 
 	inline ofVec2f GetPosition() const { return Transform.Position; }
 	inline ofVec2f GetVelocity() const { return Transform.Velocity; }

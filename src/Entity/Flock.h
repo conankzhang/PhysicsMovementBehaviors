@@ -2,6 +2,8 @@
 
 #include "Behavior/Behavior.h"
 
+#include "ofColor.h"
+
 #include <vector>
 
 class CBoid;
@@ -10,7 +12,7 @@ class CBoid;
 class CFlock
 {
 public:
-	CFlock(int InFlockCount, const std::vector<SWeightedBehavior>& InWeightedBehaviors);
+	CFlock(int InFlockCount, const std::vector<SWeightedBehavior>& InWeightedBehaviors, const ofColor& InColor);
 	~CFlock();
 
 	void Update(float DeltaTime);
@@ -20,6 +22,7 @@ public:
 	const ofVec2f& GetCenterOfMass() const { return CenterOfMass; }
 
 private:
+	const ofColor& FlockColor;
 	void UpdateCenterOfMass();
 	SBehaviorOutput GetBehaviorOutput(const CBoid& InBoid);
 

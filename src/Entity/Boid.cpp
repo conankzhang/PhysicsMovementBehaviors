@@ -87,9 +87,9 @@ void CBoid::Update(const SBehaviorOutput& Behavior, double DeltaTime)
 }
 
 //=======================================================================================================================
-void CBoid::Draw() const
+void CBoid::Draw(const ofColor& BoidColor) const
 {
-	ofSetColor(Color);
+	ofSetColor(BoidColor);
 
 	ofDrawCircle(Transform.Position, Size);
 	DrawBeak();

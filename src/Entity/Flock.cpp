@@ -4,8 +4,9 @@
 #include "Behavior/Behavior.h"
 
 //=======================================================================================================================
-CFlock::CFlock(int InFlockCount, const std::vector<SWeightedBehavior>& InWeightedBehaviors) :
-	WeightedBehaviors(InWeightedBehaviors)
+CFlock::CFlock(int InFlockCount, const std::vector<SWeightedBehavior>& InWeightedBehaviors, const ofColor& InFlockColor) :
+	WeightedBehaviors(InWeightedBehaviors),
+	FlockColor(InFlockColor)
 {
 	Boids.reserve(InFlockCount);
 	for (int i = 0; i < InFlockCount; i++)
@@ -47,7 +48,7 @@ void CFlock::Draw() const
 	{
 		if (Boid)
 		{
-			Boid->Draw();
+			Boid->Draw(FlockColor);
 		}
 	}
 }

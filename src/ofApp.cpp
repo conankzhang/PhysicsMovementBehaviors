@@ -30,6 +30,11 @@ void ofApp::update()
 	{
 		Flock->Update(ofGetLastFrameTime());
 	}
+
+	if (WanderFlock)
+	{
+		WanderFlock->Update(ofGetLastFrameTime());
+	}
 }
 
 //=======================================================================================================================
@@ -50,6 +55,11 @@ void ofApp::draw()
 	if (Flock)
 	{
 		Flock->Draw();
+	}
+
+	if (WanderFlock)
+	{
+		WanderFlock->Draw();
 	}
 }
 
@@ -109,26 +119,26 @@ void ofApp::HandleNewBehavior(EBehavior DesiredBehavior)
 	switch (DesiredBehavior)
 	{
 	case EBehavior::BASIC:
-		Flock = new CFlock(1, FlockBehaviors);
+		Flock = new CFlock(1, FlockBehaviors, ofColor::black);
 		FlockBehaviors.push_back(SWeightedBehavior(new cbasic_motion(), 1));
 		FlockBehaviors.push_back(SWeightedBehavior(new CDynamicLookWhereYouAreGoing(), 1));
 		break;
 	case EBehavior::SEEK:
-		Flock = new CFlock(1, FlockBehaviors);
+		Flock = new CFlock(1, FlockBehaviors, ofColor::black);
 		FlockBehaviors.push_back(SWeightedBehavior(new cseek_steering(Target), 1));
 		FlockBehaviors.push_back(SWeightedBehavior(new CDynamicLookWhereYouAreGoing(), 1));
 		break;
 	case EBehavior::WANDER:
-		Flock = new CFlock(1, FlockBehaviors);
+		Flock = new CFlock(1, FlockBehaviors, ofColor::black);
 		FlockBehaviors.push_back(SWeightedBehavior(new cwander_steering(Target), 1));
 		FlockBehaviors.push_back(SWeightedBehavior(new CDynamicLookWhereYouAreGoing(), 1));
 		break;
 	case EBehavior::FLOCK:
-		WanderFlock = new CFlock(1, WanderBehaviors);
+		WanderFlock = new CFlock(1, WanderBehaviors, ofColor::lightGray);
 		WanderBehaviors.push_back(SWeightedBehavior(new cwander_steering(Target), 1));
 		WanderBehaviors.push_back(SWeightedBehavior(new CDynamicLookWhereYouAreGoing(), 1));
 
-		Flock = new CFlock(10, FlockBehaviors);
+		Flock = new CFlock(10, FlockBehaviors, ofColor::black);
 		FlockBehaviors.push_back(SWeightedBehavior(new cseek_steering(WanderFlock->GetCenterOfMass()), 1));
 		FlockBehaviors.push_back(SWeightedBehavior(new CDynamicSeparation(Flock->GetBoids()), 1));
 		FlockBehaviors.push_back(SWeightedBehavior(new cseek_steering(Flock->GetCenterOfMass()), 1));
