@@ -3,7 +3,7 @@
 #include "Entity/Boid.h"
 #include "Behavior/Behavior.h"
 
-CFlock::CFlock(int InFlockCount, std::vector<SWeightedBehavior>* InWeightedBehaviors) :
+CFlock::CFlock(int InFlockCount, const std::vector<SWeightedBehavior>& InWeightedBehaviors) :
 	WeightedBehaviors(InWeightedBehaviors)
 {
 	Boids.reserve(InFlockCount);
@@ -50,19 +50,16 @@ SBehaviorOutput CFlock::GetBehaviorOutput(const CBoid& InBoid)
 {
 	SBehaviorOutput ReturnBehaviorOutput;
 
-	if (WeightedBehaviors)
+	for (auto WeightedBehavior : WeightedBehaviors)
 	{
-		for (auto WeightedBehavior : *WeightedBehaviors)
+		if (WeightedBehavior.Behavior)
 		{
-			if (WeightedBehavior.Behavior)
+			SBehaviorOutput BehaviorOutput = WeightedBehavior.Behavior->GetBehaviorOutput(InBoid);
+			ReturnBehaviorOutput.Linear += BehaviorOutput.Linear * WeightedBehavior.Weight;
+			ReturnBehaviorOutput.Angular += BehaviorOutput.Angular * WeightedBehavior.Weight;
+			if (!BehaviorOutput.Dynamic)
 			{
-				SBehaviorOutput BehaviorOutput = WeightedBehavior.Behavior->GetBehaviorOutput(InBoid);
-				ReturnBehaviorOutput.Linear += BehaviorOutput.Linear * WeightedBehavior.Weight;
-				ReturnBehaviorOutput.Angular += BehaviorOutput.Angular * WeightedBehavior.Weight;
-				if (!BehaviorOutput.Dynamic)
-				{
-					ReturnBehaviorOutput.Dynamic = false;
-				}
+				ReturnBehaviorOutput.Dynamic = false;
 			}
 		}
 	}

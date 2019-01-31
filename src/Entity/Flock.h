@@ -9,7 +9,7 @@ class CBoid;
 class CFlock
 {
 public:
-	CFlock(int InFlockCount, std::vector<SWeightedBehavior>* InWeightedBehaviors);
+	CFlock(int InFlockCount, const std::vector<SWeightedBehavior>& InWeightedBehaviors);
 	~CFlock();
 
 	void Update(float DeltaTime);
@@ -19,5 +19,5 @@ private:
 	SBehaviorOutput GetBehaviorOutput(const CBoid& InBoid);
 
 	std::vector<CBoid *> Boids;
-	std::vector<SWeightedBehavior>* WeightedBehaviors;
+	const std::vector<SWeightedBehavior>& WeightedBehaviors;
 };
