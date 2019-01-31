@@ -41,6 +41,7 @@ public:
 private:
 	void HandleNewBehavior(EBehavior DesiredBehavior);
 
+	float TargetSize;
 	ofVec2f Target;
 	CFlock* Flock;
 	std::vector<SWeightedBehavior> WeightedBehaviors;

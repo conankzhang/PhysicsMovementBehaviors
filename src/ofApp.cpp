@@ -8,8 +8,14 @@
 void ofApp::setup()
 {
 	ofBackground(ofColor::white);
+	ofSetCircleResolution(50);
 
 	CurrentBehavior = EBehavior::NONE;
+
+	Target.x = ofGetWindowWidth() / 2;
+	Target.y = ofGetWindowHeight() / 2;
+
+	TargetSize = 10.0f;
 }
 
 //=======================================================================================================================
@@ -30,6 +36,12 @@ void ofApp::draw()
 	ofDrawBitmapString("Press 2: Seek Steering", 50, 75);
 	ofDrawBitmapString("Press 3: Wander Steering", 50, 100);
 	ofDrawBitmapString("Press 4: Flocking Behavior", 50, 125);
+
+	if (CurrentBehavior == EBehavior::SEEK)
+	{
+		ofSetColor(ofColor::green);
+		ofDrawCircle(Target, TargetSize);
+	}
 
 	if (Flock)
 	{
