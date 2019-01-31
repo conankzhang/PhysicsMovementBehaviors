@@ -129,7 +129,7 @@ void ofApp::HandleNewBehavior(EBehavior DesiredBehavior)
 		FlockBehaviors.push_back(SWeightedBehavior(new CDynamicLookWhereYouAreGoing(), 1));
 		break;
 	case EBehavior::WANDER:
-		Flock = new CFlock(1, FlockBehaviors, ofColor::black);
+		Flock = new CFlock(1, FlockBehaviors, ofColor::lightGray);
 		FlockBehaviors.push_back(SWeightedBehavior(new cwander_steering(), 1));
 		break;
 	case EBehavior::FLOCK:
