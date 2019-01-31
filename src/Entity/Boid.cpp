@@ -83,6 +83,7 @@ void CBoid::Update(const SBehaviorOutput& Behavior, double DeltaTime)
 {
 	Transform.Update(Behavior, DeltaTime);
 	UpdateBreadCrumbs(DeltaTime);
+	HandleBoundaries();
 }
 
 //=======================================================================================================================
@@ -160,4 +161,25 @@ void CBoid::RotateVertex(ofVec2f& Vertex) const
 
 	Vertex.x = X;
 	Vertex.y = Y;
+}
+
+void CBoid::HandleBoundaries()
+{
+	if (Transform.Position.x < 0)
+	{
+		Transform.Position.x = ofGetWindowWidth();
+	}
+	else if (Transform.Position.x > ofGetWindowWidth())
+	{
+		Transform.Position.x = 0;
+	}
+
+	if (Transform.Position.y < 0)
+	{
+		Transform.Position.y = ofGetWindowHeight();
+	}
+	else if (Transform.Position.y > ofGetWindowHeight())
+	{
+		Transform.Position.y = 0;
+	}
 }
