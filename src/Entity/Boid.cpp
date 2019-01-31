@@ -165,21 +165,13 @@ void CBoid::RotateVertex(ofVec2f& Vertex) const
 
 void CBoid::HandleBoundaries()
 {
-	if (Transform.Position.x < 0)
+	if (Transform.Position.x < 0 || Transform.Position.x > ofGetWindowWidth())
 	{
-		Transform.Position.x = ofGetWindowWidth();
-	}
-	else if (Transform.Position.x > ofGetWindowWidth())
-	{
-		Transform.Position.x = 0;
+		Transform.Velocity.x *= -1;
 	}
 
-	if (Transform.Position.y < 0)
+	if (Transform.Position.y < 0 || Transform.Position.y > ofGetWindowHeight())
 	{
-		Transform.Position.y = ofGetWindowHeight();
-	}
-	else if (Transform.Position.y > ofGetWindowHeight())
-	{
-		Transform.Position.y = 0;
+		Transform.Velocity.y *= -1;
 	}
 }
