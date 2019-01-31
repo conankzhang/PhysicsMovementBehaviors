@@ -25,7 +25,9 @@ public:
 	void Draw() const;
 
 	inline ofVec2f GetPosition() const { return Transform.Position; }
+	inline ofVec2f GetVelocity() const { return Transform.Velocity; }
 	inline float GetSize() const { return Size; }
+	inline float GetMaxSpeed() const { return Transform.MaxSpeed; }
 
 private:
 	void UpdateBreadCrumbs(double DeltaTime);

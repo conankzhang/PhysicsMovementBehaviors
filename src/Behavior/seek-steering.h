@@ -12,4 +12,8 @@ public:
 
 private:
 	const ofVec2f& Target;
+
+	float TargetRadius;
+	float SlowRadius;
+	float TimeToTarget;
 };
