@@ -95,31 +95,44 @@ void ofApp::HandleNewBehavior(EBehavior DesiredBehavior)
 		delete Flock;
 		Flock = nullptr;
 
-		WeightedBehaviors.clear();
+		FlockBehaviors.clear();
+	}
+
+	if (WanderFlock)
+	{
+		delete WanderFlock;
+		WanderFlock = nullptr;
+
+		WanderBehaviors.clear();
 	}
 
 	switch (DesiredBehavior)
 	{
 	case EBehavior::BASIC:
-		Flock = new CFlock(1, WeightedBehaviors);
-		WeightedBehaviors.push_back(SWeightedBehavior(new cbasic_motion(), 1));
-		WeightedBehaviors.push_back(SWeightedBehavior(new CDynamicLookWhereYouAreGoing(), 1));
+		Flock = new CFlock(1, FlockBehaviors);
+		FlockBehaviors.push_back(SWeightedBehavior(new cbasic_motion(), 1));
+		FlockBehaviors.push_back(SWeightedBehavior(new CDynamicLookWhereYouAreGoing(), 1));
 		break;
 	case EBehavior::SEEK:
-		Flock = new CFlock(1, WeightedBehaviors);
-		WeightedBehaviors.push_back(SWeightedBehavior(new cseek_steering(Target), 1));
-		WeightedBehaviors.push_back(SWeightedBehavior(new CDynamicLookWhereYouAreGoing(), 1));
+		Flock = new CFlock(1, FlockBehaviors);
+		FlockBehaviors.push_back(SWeightedBehavior(new cseek_steering(Target), 1));
+		FlockBehaviors.push_back(SWeightedBehavior(new CDynamicLookWhereYouAreGoing(), 1));
 		break;
 	case EBehavior::WANDER:
-		Flock = new CFlock(1, WeightedBehaviors);
-		WeightedBehaviors.push_back(SWeightedBehavior(new cwander_steering(Target), 1));
-		WeightedBehaviors.push_back(SWeightedBehavior(new CDynamicFace(Target), 1));
+		Flock = new CFlock(1, FlockBehaviors);
+		FlockBehaviors.push_back(SWeightedBehavior(new cwander_steering(Target), 1));
+		FlockBehaviors.push_back(SWeightedBehavior(new CDynamicLookWhereYouAreGoing(), 1));
 		break;
 	case EBehavior::FLOCK:
-		Flock = new CFlock(10, WeightedBehaviors);
-		WeightedBehaviors.push_back(SWeightedBehavior(new cseek_steering(Target), 1));
-		WeightedBehaviors.push_back(SWeightedBehavior(new CDynamicLookWhereYouAreGoing(), 1));
-		WeightedBehaviors.push_back(SWeightedBehavior(new CDynamicSeparation(Flock->GetBoids()), 1));
+		WanderFlock = new CFlock(1, WanderBehaviors);
+		WanderBehaviors.push_back(SWeightedBehavior(new cwander_steering(Target), 1));
+		WanderBehaviors.push_back(SWeightedBehavior(new CDynamicLookWhereYouAreGoing(), 1));
+
+		Flock = new CFlock(10, FlockBehaviors);
+		FlockBehaviors.push_back(SWeightedBehavior(new cseek_steering(WanderFlock->GetCenterOfMass()), 1));
+		FlockBehaviors.push_back(SWeightedBehavior(new CDynamicSeparation(Flock->GetBoids()), 1));
+		FlockBehaviors.push_back(SWeightedBehavior(new cseek_steering(Flock->GetCenterOfMass()), 1));
+		FlockBehaviors.push_back(SWeightedBehavior(new CDynamicLookWhereYouAreGoing(), 1));
 		break;
 	}
 
@@ -161,7 +174,7 @@ void ofApp::windowResized(int w, int h){
 
 }
 
-//--------------------------------------------------------------
+//--------------------------------------------------------------k
 void ofApp::gotMessage(ofMessage msg){
 
 }

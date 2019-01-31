@@ -28,6 +28,8 @@ CFlock::~CFlock()
 //=======================================================================================================================
 void CFlock::Update(float DeltaTime)
 {
+	UpdateCenterOfMass();
+
 	for (auto Boid : Boids)
 	{
 		if (Boid)
@@ -48,6 +50,19 @@ void CFlock::Draw() const
 			Boid->Draw();
 		}
 	}
+}
+
+//=======================================================================================================================
+void CFlock::UpdateCenterOfMass()
+{
+	CenterOfMass = ofVec2f::zero();
+
+	for (auto Boid : Boids)
+	{
+		CenterOfMass += Boid->GetPosition();
+	}
+
+	CenterOfMass /= Boids.size();
 }
 
 //=======================================================================================================================

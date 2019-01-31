@@ -43,7 +43,12 @@ private:
 
 	float TargetSize;
 	ofVec2f Target;
+
+	CFlock* WanderFlock;
+	std::vector<SWeightedBehavior> WanderBehaviors;
+
 	CFlock* Flock;
-	std::vector<SWeightedBehavior> WeightedBehaviors;
+	std::vector<SWeightedBehavior> FlockBehaviors;
+
 	EBehavior CurrentBehavior;
 };
