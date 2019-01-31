@@ -103,11 +103,12 @@ void ofApp::HandleNewBehavior(EBehavior DesiredBehavior)
 	case EBehavior::BASIC:
 		Flock = new CFlock(1, WeightedBehaviors);
 		WeightedBehaviors.push_back(SWeightedBehavior(new cbasic_motion(), 1));
+		WeightedBehaviors.push_back(SWeightedBehavior(new CDynamicLookWhereYouAreGoing(), 1));
 		break;
 	case EBehavior::SEEK:
 		Flock = new CFlock(1, WeightedBehaviors);
 		WeightedBehaviors.push_back(SWeightedBehavior(new cseek_steering(Target), 1));
-		WeightedBehaviors.push_back(SWeightedBehavior(new CDynamicLookWhereYouAreGoing(Target), 1));
+		WeightedBehaviors.push_back(SWeightedBehavior(new CDynamicLookWhereYouAreGoing(), 1));
 		break;
 	case EBehavior::WANDER:
 		Flock = new CFlock(1, WeightedBehaviors);
@@ -117,7 +118,7 @@ void ofApp::HandleNewBehavior(EBehavior DesiredBehavior)
 	case EBehavior::FLOCK:
 		Flock = new CFlock(10, WeightedBehaviors);
 		WeightedBehaviors.push_back(SWeightedBehavior(new cseek_steering(Target), 1));
-		WeightedBehaviors.push_back(SWeightedBehavior(new CDynamicLookWhereYouAreGoing(Target), 1));
+		WeightedBehaviors.push_back(SWeightedBehavior(new CDynamicLookWhereYouAreGoing(), 1));
 		WeightedBehaviors.push_back(SWeightedBehavior(new CDynamicSeparation(Flock->GetBoids()), 1));
 		break;
 	}

@@ -4,7 +4,6 @@
 
 //=======================================================================================================================
 CDynamicAlign::CDynamicAlign() :
-	Target(ofVec2f::zero()),
 	TargetAngleThreshold(0.5f),
 	SlowAngleThreshold(1.0f),
 	TimeToTarget(1.0f),

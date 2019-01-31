@@ -2,9 +2,8 @@
 
 #include "Entity/Boid.h"
 //=======================================================================================================================
-CDynamicLookWhereYouAreGoing::CDynamicLookWhereYouAreGoing(ofVec2f InTarget)
+CDynamicLookWhereYouAreGoing::CDynamicLookWhereYouAreGoing()
 {
-	DynamicAlign.SetTarget(InTarget);
 }
 
 //=======================================================================================================================

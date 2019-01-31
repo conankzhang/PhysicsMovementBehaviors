@@ -5,7 +5,6 @@
 CDynamicFace::CDynamicFace(ofVec2f InTarget) :
 	Target(InTarget)
 {
-	DynamicAlign.SetTarget(InTarget);
 }
 
 //=======================================================================================================================

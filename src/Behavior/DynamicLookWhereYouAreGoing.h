@@ -7,7 +7,7 @@
 class CDynamicLookWhereYouAreGoing : public CBehavior
 {
 public:
-	CDynamicLookWhereYouAreGoing(ofVec2f InTarget);
+	CDynamicLookWhereYouAreGoing();
 	~CDynamicLookWhereYouAreGoing();
 
 	virtual SBehaviorOutput GetBehaviorOutput(const CBoid& InBoid) override;
