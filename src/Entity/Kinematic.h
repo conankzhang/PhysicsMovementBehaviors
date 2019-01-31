@@ -17,6 +17,4 @@ struct SKinematic
 
 	SKinematic();
 	void Update(const SBehaviorOutput& Behavior, double DeltaTime);
-
 };
-

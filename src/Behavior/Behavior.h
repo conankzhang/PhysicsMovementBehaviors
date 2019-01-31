@@ -8,6 +8,7 @@ struct SBehaviorOutput
 {
 	ofVec2f Linear;
 	float Angular;
+	bool Dynamic;
 
 	SBehaviorOutput();
 };

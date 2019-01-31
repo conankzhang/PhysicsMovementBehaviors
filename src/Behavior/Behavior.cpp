@@ -2,7 +2,8 @@
 
 SBehaviorOutput::SBehaviorOutput() :
 	Linear(ofVec2f::zero()),
-	Angular(0.0f)
+	Angular(0.0f),
+	Dynamic(true)
 {
 
 }

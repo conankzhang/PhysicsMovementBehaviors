@@ -59,6 +59,10 @@ SBehaviorOutput CFlock::GetBehaviorOutput(const CBoid& InBoid)
 				SBehaviorOutput BehaviorOutput = WeightedBehavior.Behavior->GetBehaviorOutput(InBoid);
 				ReturnBehaviorOutput.Linear += BehaviorOutput.Linear * WeightedBehavior.Weight;
 				ReturnBehaviorOutput.Angular += BehaviorOutput.Angular * WeightedBehavior.Weight;
+				if (!BehaviorOutput.Dynamic)
+				{
+					ReturnBehaviorOutput.Dynamic = false;
+				}
 			}
 		}
 	}

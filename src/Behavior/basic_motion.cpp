@@ -8,7 +8,7 @@ cbasic_motion::cbasic_motion() :
 	WindowHeight(ofGetWindowHeight()),
 	WindowWidth(ofGetWindowWidth()),
 	Direction(EDirection::UP),
-	MaxSpeed(25.0f)
+	MaxSpeed(100.0f)
 {
 
 }
@@ -16,6 +16,7 @@ cbasic_motion::cbasic_motion() :
 SBehaviorOutput cbasic_motion::GetBehaviorOutput(const CBoid& InBoid)
 {
 	SBehaviorOutput BehaviorOutput;
+	BehaviorOutput.Dynamic = false;
 
 	switch(Direction)
 	{

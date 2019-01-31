@@ -7,7 +7,7 @@ SKinematic::SKinematic() :
 	Velocity(ofVec2f::zero()),
 	Orientation(0.0f),
 	Rotation(0.0f),
-	MaxSpeed(100.0f),
+	MaxSpeed(500.0f),
 	MaxAngularSpeed(2.0f)
 {
 
@@ -18,16 +18,24 @@ void SKinematic::Update(const SBehaviorOutput& Behavior, double DeltaTime)
 	Position += Velocity * DeltaTime;
 	Orientation += Rotation * DeltaTime;
 
-	Velocity += Behavior.Linear * DeltaTime;
-	if (Velocity.length() > MaxSpeed)
+	if (Behavior.Dynamic)
 	{
-		Velocity.normalize();
-		Velocity *= MaxSpeed;
-	}
+		Velocity += Behavior.Linear * DeltaTime;
+		if (Velocity.length() > MaxSpeed)
+		{
+			Velocity.normalize();
+			Velocity *= MaxSpeed;
+		}
 
-	Rotation += Behavior.Angular * DeltaTime;
-	if (Rotation > MaxAngularSpeed)
+		Rotation += Behavior.Angular * DeltaTime;
+		if (Rotation > MaxAngularSpeed)
+		{
+			Rotation = MaxAngularSpeed;
+		}
+	}
+	else
 	{
-		Rotation = MaxAngularSpeed;
+		Velocity = Behavior.Linear;
+		Rotation = Behavior.Angular;
 	}
 }
