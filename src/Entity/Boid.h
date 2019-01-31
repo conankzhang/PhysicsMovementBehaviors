@@ -26,8 +26,10 @@ public:
 
 	inline ofVec2f GetPosition() const { return Transform.Position; }
 	inline ofVec2f GetVelocity() const { return Transform.Velocity; }
-	inline float GetSize() const { return Size; }
+	inline float GetOrientation() const { return Transform.Orientation; }
+	inline float GetRotation() const { return Transform.Rotation; }
 	inline float GetMaxSpeed() const { return Transform.MaxSpeed; }
+	inline float GetSize() const { return Size; }
 
 private:
 	void UpdateBreadCrumbs(double DeltaTime);

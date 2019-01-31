@@ -3,6 +3,7 @@
 
 #include "Behavior/basic-motion.h"
 #include "Behavior/seek-steering.h"
+#include "Behavior/DynamicAlign.h"
 
 //=======================================================================================================================
 void ofApp::setup()
@@ -101,7 +102,8 @@ void ofApp::HandleNewBehavior(EBehavior DesiredBehavior)
 		Flock = new CFlock(1, WeightedBehaviors);
 		break;
 	case EBehavior::SEEK:
-		WeightedBehaviors.push_back(SWeightedBehavior(new cseek_steering(Target), 1));
+		//WeightedBehaviors.push_back(SWeightedBehavior(new cseek_steering(Target), 1));
+		WeightedBehaviors.push_back(SWeightedBehavior(new CDynamicAlign(Target), 1));
 		Flock = new CFlock(1, WeightedBehaviors);
 		break;
 	case EBehavior::WANDER:

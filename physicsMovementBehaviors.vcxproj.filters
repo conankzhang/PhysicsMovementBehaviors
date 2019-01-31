@@ -137,6 +137,7 @@
     <ClCompile Include="src\Behavior\Behavior.cpp" />
     <ClCompile Include="src\Behavior\basic-motion.cpp" />
     <ClCompile Include="src\Behavior\seek-steering.cpp" />
+    <ClCompile Include="src\Behavior\DynamicAlign.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -700,6 +701,7 @@
     <ClInclude Include="src\Entity\Breadcrumb.h" />
     <ClInclude Include="src\Behavior\basic-motion.h" />
     <ClInclude Include="src\Behavior\seek-steering.h" />
+    <ClInclude Include="src\Behavior\DynamicAlign.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
