@@ -5,9 +5,9 @@
 //=======================================================================================================================
 cseek_steering::cseek_steering(const ofVec2f& InTarget) :
 	Target(InTarget),
-	TargetRadius(50.0f),
+	TargetRadius(20.0f),
 	SlowRadius(100.0f),
-	TimeToTarget(3.0f)
+	TimeToTarget(6.0f)
 {
 
 }
@@ -37,7 +37,7 @@ SBehaviorOutput cseek_steering::GetBehaviorOutput(const CBoid& InBoid)
 	}
 	else
 	{
-		TargetSpeed = InBoid.GetMaxSpeed() * Distance / SlowRadius;
+		TargetSpeed = -InBoid.GetMaxSpeed() * Distance / SlowRadius;
 	}
 
 	ofVec2f TargetVelocity = Direction.getNormalized() * TargetSpeed;
