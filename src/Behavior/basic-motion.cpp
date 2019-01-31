@@ -55,7 +55,7 @@ SBehaviorOutput cbasic_motion::GetBehaviorOutput(const CBoid& InBoid)
 	case EDirection::LEFT:
 		if (InBoid.GetPosition().x < InBoid.GetSize())
 		{
-			Direction = EDirection::UP;
+			Direction = EDirection::STOP;
 		}
 		else
 		{

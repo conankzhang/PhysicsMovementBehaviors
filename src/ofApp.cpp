@@ -9,10 +9,7 @@ void ofApp::setup()
 {
 	ofBackground(ofColor::white);
 
-	CurrentBehavior = EBehavior::BASIC;
-
-	WeightedBehaviors.push_back(SWeightedBehavior(new cbasic_motion(), 1));
-	Flock = new CFlock(1, WeightedBehaviors);
+	CurrentBehavior = EBehavior::NONE;
 }
 
 //=======================================================================================================================
@@ -27,6 +24,8 @@ void ofApp::update()
 //=======================================================================================================================
 void ofApp::draw()
 {
+	ofSetColor(ofColor::black);
+
 	ofDrawBitmapString("Press 1: Basic Motion", 50, 50);
 	ofDrawBitmapString("Press 2: Seek Steering", 50, 75);
 	ofDrawBitmapString("Press 3: Wander Steering", 50, 100);
