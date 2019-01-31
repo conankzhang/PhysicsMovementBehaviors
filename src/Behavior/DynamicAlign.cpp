@@ -3,13 +3,14 @@
 #include "Entity/Boid.h"
 
 //=======================================================================================================================
-CDynamicAlign::CDynamicAlign(const ofVec2f& InTarget) :
-	Target(InTarget),
-	TargetAngleThreshold(0.05f),
-	SlowAngleThreshold(0.1f),
-	TimeToTarget(0.01f),
-	MaxRotation(0.1f),
-	MaxAngularAcceleration(0.1f)
+CDynamicAlign::CDynamicAlign() :
+	Target(ofVec2f::zero()),
+	TargetAngleThreshold(0.5f),
+	SlowAngleThreshold(1.0f),
+	TimeToTarget(1.0f),
+	MaxRotation(1.0f),
+	MaxAngularAcceleration(1.0f),
+	TargetOrientation(0.0f)
 {
 
 }
@@ -25,13 +26,6 @@ SBehaviorOutput CDynamicAlign::GetBehaviorOutput(const CBoid& InBoid)
 {
 	SBehaviorOutput BehaviorOutput;
 
-	ofVec2f Direction = Target - InBoid.GetPosition();
-	if (Direction.length() == 0)
-	{
-		return BehaviorOutput;
-	}
-
-	float TargetOrientation = atan2(Direction.y, Direction.x);
 	float Rotation = TargetOrientation - InBoid.GetOrientation();
 
 	Rotation = MapToRange(Rotation);
@@ -65,6 +59,7 @@ SBehaviorOutput CDynamicAlign::GetBehaviorOutput(const CBoid& InBoid)
 	return BehaviorOutput;
 }
 
+//=======================================================================================================================
 float CDynamicAlign::MapToRange(float InRotation)
 {
 	float Rotation = InRotation;

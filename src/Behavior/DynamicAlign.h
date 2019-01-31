@@ -5,16 +5,19 @@
 class CDynamicAlign : public CBehavior
 {
 public:
-	CDynamicAlign(const ofVec2f& InTarget);
+	CDynamicAlign();
 	~CDynamicAlign();
 
 	virtual SBehaviorOutput GetBehaviorOutput(const CBoid& InBoid) override;
+	inline void SetTargetOrientation(float InTargetOrientation) { TargetOrientation = InTargetOrientation; }
 
+	inline void SetTarget(ofVec2f InTarget) { Target = InTarget; }
 private:
 	float MapToRange(float InRotation);
 
-	const ofVec2f& Target;
+	ofVec2f Target;
 
+	float TargetOrientation;
 	float TargetAngleThreshold;
 	float SlowAngleThreshold;
 	float TimeToTarget;

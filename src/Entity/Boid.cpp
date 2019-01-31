@@ -134,8 +134,8 @@ void CBoid::UpdateBreadCrumbs(double DeltaTime)
 void CBoid::DrawBeak() const
 {
 	// Default Beak to the Right Vertices
-	ofVec2f TriangleVertex1(0.0f, Size);
-	ofVec2f TriangleVertex2(0.0f, -Size);
+	ofVec2f TriangleVertex1(0.0f, -Size);
+	ofVec2f TriangleVertex2(0.0f, Size);
 	ofVec2f TriangleVertex3(Size * 2, 0.0f);
 
 	// Apply Orientation to Vertices
