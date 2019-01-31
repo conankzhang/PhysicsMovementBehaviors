@@ -138,10 +138,10 @@ void ofApp::HandleNewBehavior(EBehavior DesiredBehavior)
 		WanderBehaviors.push_back(SWeightedBehavior(new cwander_steering(Target), 1));
 		WanderBehaviors.push_back(SWeightedBehavior(new CDynamicLookWhereYouAreGoing(), 1));
 
-		Flock = new CFlock(10, FlockBehaviors, ofColor::black);
-		FlockBehaviors.push_back(SWeightedBehavior(new cseek_steering(WanderFlock->GetCenterOfMass()), 1));
-		FlockBehaviors.push_back(SWeightedBehavior(new CDynamicSeparation(Flock->GetBoids()), 1));
-		FlockBehaviors.push_back(SWeightedBehavior(new cseek_steering(Flock->GetCenterOfMass()), 1));
+		Flock = new CFlock(15, FlockBehaviors, ofColor::black);
+		FlockBehaviors.push_back(SWeightedBehavior(new cseek_steering(WanderFlock->GetCenterOfMass()), 0.2f));
+		FlockBehaviors.push_back(SWeightedBehavior(new CDynamicSeparation(Flock->GetBoids()), 1.0f));
+		FlockBehaviors.push_back(SWeightedBehavior(new cseek_steering(Flock->GetCenterOfMass()), 0.5f));
 		FlockBehaviors.push_back(SWeightedBehavior(new CDynamicLookWhereYouAreGoing(), 1));
 		break;
 	}

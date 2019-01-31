@@ -23,21 +23,22 @@ void SKinematic::Update(const SBehaviorOutput& Behavior, double DeltaTime)
 	if (Behavior.Dynamic)
 	{
 		Velocity += Behavior.Linear * DeltaTime;
-		if (Velocity.length() > MaxSpeed)
-		{
-			Velocity.normalize();
-			Velocity *= MaxSpeed;
-		}
-
 		Rotation += Behavior.Angular * DeltaTime;
-		if (Rotation > MaxAngularSpeed)
-		{
-			Rotation = MaxAngularSpeed;
-		}
 	}
 	else
 	{
 		Velocity = Behavior.Linear;
 		Rotation = Behavior.Angular;
+	}
+
+	if (Velocity.length() > MaxSpeed)
+	{
+		Velocity.normalize();
+		Velocity *= MaxSpeed;
+	}
+
+	if (Rotation > MaxAngularSpeed)
+	{
+		Rotation = MaxAngularSpeed;
 	}
 }

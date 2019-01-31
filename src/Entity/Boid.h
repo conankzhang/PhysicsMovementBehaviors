@@ -29,6 +29,7 @@ public:
 	inline float GetOrientation() const { return Transform.Orientation; }
 	inline float GetRotation() const { return Transform.Rotation; }
 	inline float GetMaxSpeed() const { return Transform.MaxSpeed; }
+	inline float GetMaxAngularSpeed() const { return Transform.MaxAngularSpeed; }
 	inline float GetSize() const { return Size; }
 
 private:

@@ -5,9 +5,9 @@
 //=======================================================================================================================
 CDynamicSeparation::CDynamicSeparation(const std::vector<CBoid *>* InTargets) :
 	Targets(InTargets),
-	Threshold(50.0f),
-	K(10.0f),
-	MaxAcceleration(200.0f)
+	Threshold(100.0f),
+	K(100.0f),
+	MaxAcceleration(500.0f)
 {
 
 }

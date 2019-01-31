@@ -12,5 +12,7 @@ public:
 
 private:
 	const ofVec2f& Target;
+
+	float RandomBinomial();
 };
 
