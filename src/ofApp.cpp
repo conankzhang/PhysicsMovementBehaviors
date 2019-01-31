@@ -44,8 +44,7 @@ void ofApp::draw()
 
 	if (CurrentBehavior == EBehavior::SEEK)
 	{
-		ofSetColor(ofColor::green);
-		ofDrawCircle(Target, TargetSize);
+		ofDrawRectangle(Target.x, Target.y, TargetSize, TargetSize);
 	}
 
 	if (Flock)
