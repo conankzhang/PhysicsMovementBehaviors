@@ -159,8 +159,8 @@ void CBoid::RotateVertex(ofVec2f& Vertex) const
 	float X = Vertex.x * cos(Orientation) - Vertex.y * sin(Orientation);
 	float Y = Vertex.x * sin(Orientation) + Vertex.y * cos(Orientation);
 
-	Vertex.x = Y;
-	Vertex.y = X;
+	Vertex.x = X;
+	Vertex.y = Y;
 }
 
 void CBoid::HandleBoundaries()

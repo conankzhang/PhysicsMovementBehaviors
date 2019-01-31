@@ -4,11 +4,11 @@
 
 //=======================================================================================================================
 CDynamicAlign::CDynamicAlign() :
-	TargetAngleThreshold(0.5f),
-	SlowAngleThreshold(1.0f),
+	TargetAngleThreshold(0.1f),
+	SlowAngleThreshold(0.3f),
 	TimeToTarget(1.0f),
-	MaxRotation(1.0f),
-	MaxAngularAcceleration(1.0f),
+	MaxRotation(10.0f),
+	MaxAngularAcceleration(10.0f),
 	TargetOrientation(0.0f)
 {
 
