@@ -38,7 +38,6 @@ public:
 private:
 	void HandleNewBehavior(EBehavior DesiredBehavior);
 
-	ofColor BackgroundColor;
 	CFlock* Flock;
 	std::vector<SWeightedBehavior> WeightedBehaviors;
 

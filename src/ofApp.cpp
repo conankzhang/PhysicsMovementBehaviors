@@ -6,7 +6,7 @@
 
 void ofApp::setup()
 {
-	BackgroundColor = ofColor::white;
+	ofBackground(ofColor::white);
 
 	CurrentBehavior = EBehavior::BASIC;
 
@@ -24,7 +24,10 @@ void ofApp::update()
 
 void ofApp::draw()
 {
-	ofBackground(BackgroundColor);
+	ofDrawBitmapString("Press 1: Basic Motion", 50, 50);
+	ofDrawBitmapString("Press 2: Seek Steering", 50, 75);
+	ofDrawBitmapString("Press 3: Wander Steering", 50, 100);
+	ofDrawBitmapString("Press 4: Flocking Behavior", 50, 125);
 
 	if (Flock)
 	{
