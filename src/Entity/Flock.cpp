@@ -30,7 +30,6 @@ CFlock::~CFlock()
 void CFlock::Update(float DeltaTime)
 {
 	UpdateCenterOfMass();
-
 	for (auto Boid : Boids)
 	{
 		if (Boid)
