@@ -184,7 +184,9 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Behavior\wander_steering.cpp" />
+    <ClCompile Include="src\Behavior\DynamicSeparation.cpp" />
+    <ClCompile Include="src\Behavior\flocking-behavior.cpp" />
+    <ClCompile Include="src\Behavior\wander-steering.cpp" />
     <ClCompile Include="src\Behavior\DynamicFace.cpp" />
     <ClCompile Include="src\Behavior\DynamicLookWhereYouAreGoing.cpp" />
     <ClCompile Include="src\Behavior\DynamicAlign.cpp" />
@@ -238,7 +240,9 @@
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Behavior\wander_steering.h" />
+    <ClInclude Include="src\Behavior\DynamicSeparation.h" />
+    <ClInclude Include="src\Behavior\flocking-behavior.h" />
+    <ClInclude Include="src\Behavior\wander-steering.h" />
     <ClInclude Include="src\Behavior\DynamicFace.h" />
     <ClInclude Include="src\Behavior\DynamicLookWhereYouAreGoing.h" />
     <ClInclude Include="src\Behavior\DynamicAlign.h" />

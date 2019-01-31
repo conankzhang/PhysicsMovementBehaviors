@@ -5,6 +5,9 @@
 #include "Behavior/seek-steering.h"
 #include "Behavior/DynamicLookWhereYouAreGoing.h"
 #include "Behavior/DynamicFace.h"
+#include "Behavior/wander-steering.h"
+#include "Behavior/flocking-behavior.h"
+#include "Behavior/DynamicSeparation.h"
 
 //=======================================================================================================================
 void ofApp::setup()
@@ -99,17 +102,24 @@ void ofApp::HandleNewBehavior(EBehavior DesiredBehavior)
 	switch (DesiredBehavior)
 	{
 	case EBehavior::BASIC:
-		WeightedBehaviors.push_back(SWeightedBehavior(new cbasic_motion(), 1));
 		Flock = new CFlock(1, WeightedBehaviors);
+		WeightedBehaviors.push_back(SWeightedBehavior(new cbasic_motion(), 1));
 		break;
 	case EBehavior::SEEK:
+		Flock = new CFlock(1, WeightedBehaviors);
 		WeightedBehaviors.push_back(SWeightedBehavior(new cseek_steering(Target), 1));
 		WeightedBehaviors.push_back(SWeightedBehavior(new CDynamicLookWhereYouAreGoing(Target), 1));
-		Flock = new CFlock(1, WeightedBehaviors);
 		break;
 	case EBehavior::WANDER:
+		Flock = new CFlock(1, WeightedBehaviors);
+		WeightedBehaviors.push_back(SWeightedBehavior(new cwander_steering(Target), 1));
+		WeightedBehaviors.push_back(SWeightedBehavior(new CDynamicFace(Target), 1));
 		break;
 	case EBehavior::FLOCK:
+		Flock = new CFlock(10, WeightedBehaviors);
+		WeightedBehaviors.push_back(SWeightedBehavior(new cseek_steering(Target), 1));
+		WeightedBehaviors.push_back(SWeightedBehavior(new CDynamicLookWhereYouAreGoing(Target), 1));
+		WeightedBehaviors.push_back(SWeightedBehavior(new CDynamicSeparation(Flock->GetBoids()), 1));
 		break;
 	}
 

@@ -16,6 +16,8 @@ public:
 	void Update(float DeltaTime);
 	void Draw() const;
 
+	const std::vector<CBoid *>* GetBoids() const { return &Boids; }
+
 private:
 	SBehaviorOutput GetBehaviorOutput(const CBoid& InBoid);
 
