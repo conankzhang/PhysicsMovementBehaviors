@@ -6,7 +6,6 @@
 #include "Behavior/DynamicLookWhereYouAreGoing.h"
 #include "Behavior/DynamicFace.h"
 #include "Behavior/wander-steering.h"
-#include "Behavior/flocking-behavior.h"
 #include "Behavior/DynamicSeparation.h"
 
 //=======================================================================================================================
